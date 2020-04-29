@@ -198,7 +198,6 @@
 	<script src="<%=url('admin/translations', luci.i18n.context.lang)%>?v=git-20.029.45734-adbbd5c"></script>
 	<script src="<%=resource%>/cbi.js?v=git-20.029.45734-adbbd5c"></script>
 	<script src="<%=resource%>/xhr.js?v=git-20.029.45734-adbbd5c"></script>
-	<script src="<%=media%>/js/jquery.min.js?v=git-20.029.45734-adbbd5c"></script>
 </head>
 <body class="lang_<%=luci.i18n.context.lang%> <% if node then %><%= striptags( node.title ) %><% end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>" data-page="<%= table.concat(disp.context.requestpath, "-") %>">
 
