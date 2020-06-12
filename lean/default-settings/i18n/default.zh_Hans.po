@@ -58,6 +58,9 @@ msgstr "基本设置"
 msgid "Log"
 msgstr "日志"
 
+msgid "NAS"
+msgstr "网络存储"
+
 msgid "Force 40MHz mode"
 msgstr "强制 40MHz 频宽"
 
