@@ -18,7 +18,7 @@ msgid "0 means no limitation"
 msgstr "0 表明不限制"
 
 msgid "A message will be displayed when entering a directory."
-msgstr "在进入一个新目录时将显示的消息"
+msgstr "在进入一个新目录时将显示的消息。"
 
 msgid "ASCII mode"
 msgstr "ASCII 模式"
@@ -229,4 +229,3 @@ msgstr "Pasv 模式最小端口"
 
 msgid "Pasv Max Port"
 msgstr "Pasv 模式最大端口"
-
