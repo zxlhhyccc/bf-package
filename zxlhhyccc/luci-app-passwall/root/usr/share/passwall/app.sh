@@ -463,7 +463,7 @@ clean_log() {
 
 start_crontab() {
 	touch /etc/crontabs/root
-	sed -i '/$CONFIG/d' /etc/crontabs/root >/dev/null 2>&1 &
+	sed -i "/$CONFIG/d" /etc/crontabs/root >/dev/null 2>&1 &
 	auto_on=$(config_t_get global_delay auto_on 0)
 	if [ "$auto_on" = "1" ]; then
 		time_off=$(config_t_get global_delay time_off)
