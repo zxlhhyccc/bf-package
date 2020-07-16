@@ -11,7 +11,7 @@ define Package/$(PKG_NAME)
 	CATEGORY:=LuCI
 	SUBMENU:=3. Applications
 	TITLE:=LuCI app for clash
-	DEPENDS:=+luci-base +wget +iptables +coreutils-base64 +coreutils +coreutils-nohup +bash +ipset +libustream-openssl +curl +jsonfilter +ca-certificates +iptables-mod-tproxy +kmod-tun
+	DEPENDS:=+luci-base +wget +iptables +coreutils-base64 +coreutils +coreutils-nohup +bash +ipset +libustream-openssl +curl +jsonfilter +ca-certificates +iptables-mod-tproxy +kmod-tun +rpcd
 	PKGARCH:=all
 	MAINTAINER:=frainzy1477
 endef
@@ -109,8 +109,6 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci
 	$(INSTALL_DIR) $(1)/usr/share/
 	$(INSTALL_DIR) $(1)/usr/share/clash
-	$(INSTALL_DIR) $(1)/usr/share/rpcd	
-	$(INSTALL_DIR) $(1)/usr/share/rpcd/acl.d	
 	$(INSTALL_DIR) $(1)/usr/share/clash/rules
 	$(INSTALL_DIR) $(1)/usr/share/clash/rules/g_rules
 	$(INSTALL_DIR) $(1)/etc/clash/dashboard
@@ -136,7 +134,6 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_CONF) ./root/etc/clash/Country.mmdb $(1)/etc/clash
 	$(INSTALL_BIN) ./root/usr/share/clash/create/* $(1)/usr/share/clash/create
 	$(INSTALL_BIN) ./root/usr/share/clash/*.sh $(1)/usr/share/clash
-	$(INSTALL_BIN) ./root/usr/share/rpcd/acl.d/luci-app-clash.json $(1)/usr/share/rpcd/acl.d
 	$(INSTALL_BIN) ./root/usr/share/clash/rules/g_rules/Steam.rules $(1)/usr/share/clash/rules/g_rules
 	$(INSTALL_BIN) ./root//usr/share/clash/rules/rules.list $(1)/usr/share/clash/rules
 	
