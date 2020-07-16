@@ -338,8 +338,8 @@ local function processData(szType, content, add_mode)
 		result.port = info.port
 		result.protocol = 'vmess'
 		result.transport = info.net
-		result.VMess_alterId = info.aid
-		result.VMess_id = info.id
+		result.alter_id = info.aid
+		result.vmess_id = info.id
 		result.remarks = info.ps
 		-- result.mux = 1
 		-- result.mux_concurrency = 8
@@ -375,7 +375,7 @@ local function processData(szType, content, add_mode)
 		end
 		if not info.security then result.security = "auto" end
 		if info.tls == "tls" or info.tls == "1" then
-			result.tream_security = "tls"
+			result.stream_security = "tls"
 			result.tls_serverName = info.host
 			result.tls_allowInsecure = allowInsecure_default and "1" or "0"
 		else
