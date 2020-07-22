@@ -388,6 +388,7 @@ body {
   margin: 0;
   padding: 0;
 background-color: #fff;
+overflow: hidden;
 }
 select {
   padding: 0.36rem 0.8rem;
@@ -421,7 +422,6 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     border-bottom: 1px solid #9e9e9e;
     border-radius: 0;
     outline: none;
-    width: 100%;
     margin: 0;
     padding: 0;
     -webkit-box-shadow: none;
@@ -619,7 +619,6 @@ p{
   position: relative;
   z-index: 50;
   margin-top: 2rem;
-  overflow:hidden;
 }
 .pull-right {
   float: right;
@@ -685,11 +684,18 @@ header .fill .status * {
 #xhr_poll_status * {
   color: #fff;
 }
+.modal.alert-message{
+  background-color: #5A8DEE;
+  color:#fff;	
+}
 .modal.alert-message p{
 	font-weight:bold;
-	color:#fff;
 	font-size:0.9rem;
 	text-align:center;
+}
+.modal .label.warning{
+    background-color: #FDAC41 !important;
+	color:#fff !important;
 }
 .danger {
   background-color: rgba(255, 91, 92, 0.2) !important;
@@ -699,14 +705,15 @@ header .fill .status * {
   background-color: rgba(253, 172, 65, 0.2) !important;
 	color:#FDAC41 !important;
 }
+.modal.warning {
+ color: #fff !important;
+	background-color:#FDAC41 !important;	
+}
 .success {
   background-color: rgba(57, 218, 138, 0.2) !important;
 	color:#39DA8A !important;
 }
-.notice {
-  background-color: #5A8DEE !important;
 
-}
 .error {
   color: #f00;
 }
@@ -1157,6 +1164,7 @@ tr > th,
 .cbi-section-table-row > .cbi-value-field .cbi-input-text,
 .cbi-section-table-row > .cbi-value-field .cbi-input-password {
   width: 100%;
+min-width:0 !important;
 }
 .cbi-section-table-row > .cbi-value-field [data-dynlist] > input,
 .cbi-section-table-row > .cbi-value-field input.cbi-input-password {
@@ -1165,32 +1173,29 @@ tr > th,
 .cbi-section-table-row .td {
   text-align: center !important;
 }
-div > table > tbody > tr,
+
+table > tbody > tr,
 div > .table > .tr {
-  background-color: #e5effd;
+	 background-color: #fff;
   transition: background-color .25s
-  
 }
-div > table > tbody > tr:hover,
-div > .table > .tr:hover {
+table > tbody > tr:nth-of-type(4n+2),
+div > .table > .tr:nth-of-type(4n+2) {
+background-color: #e5effd;
+}
+table > tbody > tr:nth-of-type(4n+2):hover,
+div > .table > .tr:nth-of-type(4n+2):hover {
   background-color: #d9e9ff;
 }
-div > table > tbody > tr:nth-of-type(2n),
-div > .table > .tr:nth-of-type(2n) {
- background-color: #fff;
+table > tbody > tr:nth-of-type(4n),
+div > .table > .tr:nth-of-type(4n) {
+  background-color: rgba(223, 56, 18, 0.04);
 }
-div > table > tbody > tr:nth-of-type(2n):hover,
-div > .table > .tr:nth-of-type(2n):hover {
- 
-}
-div > table > tbody > tr:nth-of-type(3n),
-div > .table > .tr:nth-of-type(3n) {
-  background-color: rgba(223, 56, 18, 0.05);
-}
-div > table > tbody > tr:nth-of-type(3n):hover,
-div > .table > .tr:nth-of-type(3n):hover {
+table > tbody > tr:nth-of-type(4n):hover,
+div > .table > .tr:nth-of-type(4n):hover {
   background-color: rgba(223, 56, 18, 0.09);
 }
+
 /* fix multiple table */
 table table,
 .table .table,
@@ -1211,6 +1216,7 @@ td > table > tbody > tr > td,
   width: auto !important;
   padding: 0 0.8rem;
   cursor: pointer;
+   white-space: nowrap;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1218,7 +1224,6 @@ td > table > tbody > tr > td,
   transition: all 0.2s ease-in-out;
   text-align: center;
   vertical-align: middle;
-  white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.87);
@@ -1271,6 +1276,7 @@ td > table > tbody > tr > td,
 .item:hover::after,
 .item:focus::after {
       opacity: 0.7;
+	top:0.15rem;
 }
 .btn:active,
 .cbi-button:active,
@@ -1512,11 +1518,11 @@ ul.tabs,.tabmenu .tabs,#tabmenu .tabs,ul.cbi-tabmenu{
 .cbi-value {
   display: inline-block;
   width: 100%;
-  padding: 0.35rem 1rem 0.2rem 1rem;
+  padding: 0.35rem 1rem 0.35rem 1rem;
   line-height: 2.4rem;
 }
 .cbi-value-field >*{
-	line-height: 2.2rem;
+	line-height: 1.3rem;
 }
 .cbi-value ul {
   line-height: 1.25;
@@ -1896,7 +1902,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   flex-wrap: wrap;
   width: 90%;
   min-width: 270px;
-  max-width: 600px;
+  max-width: 695px;
   min-height: 32px;
   margin: 25vh auto;
   padding: 1em;
@@ -1945,17 +1951,14 @@ h3+p,h4+p{
   font-size: 0.6rem;
   font-weight: normal;
   padding: 0.1rem 0.3rem;
-  padding-bottom: 0;
   cursor: default;
   border-radius: 0;
+  background: #9b9b9b;
+    color: #fff;
 }
-.modal .label.warning {
-  background-color: #f0ad4e !important;
-}
-
-.modal.cbi-modal {
-  max-width: 90%;
-  max-height: none;
+.modal .label.notice{
+	color: #fff;
+    background: #5A8DEE;
 }
 body.modal-overlay-active {
   overflow: hidden;
@@ -2093,7 +2096,6 @@ textarea {
 #syslog {
   font-size: small;
   line-height: 1.25;
-  overflow-y: hidden;
   width: 100%;
   min-height: 15rem;
   padding: 1rem;
@@ -2396,6 +2398,7 @@ input[name="nslookup"] {
 .node-main-login .main .main-right {
   width: 100%;
   text-align:center;
+overflow: hidden;
 }
 .node-main-login .main .main-right header {
   background: none !important;
@@ -2427,7 +2430,6 @@ input[name="nslookup"] {
   background-color: transparent !important;
   text-align: center;
   display:inline-block;
-  position:relative;
   z-index:999;
 }
 .node-main-login .main .main-right #maincontent .container {
@@ -2857,6 +2859,9 @@ input[type="checkbox"] {
   padding: 0;
   cursor: pointer;
   transition: all 0.2s;
+      position: absolute;
+    opacity: 0;
+    pointer-events: none;
 
 }
 input[type="checkbox"]:checked {
@@ -3612,4 +3617,13 @@ h2,.cbi-map-descr{
 }
 .node-admin-status .table .tr .td:first-child{
 	padding-left:3rem !important;
+}
+ul.errors li{
+margin-bottom: 1rem;	
+}
+.Wireless .cbi-section{
+padding:0 2rem;
+}
+.cbi-section-table-row > .cbi-value-field .cbi-input-select {
+    min-width: 5rem !important;
 }
