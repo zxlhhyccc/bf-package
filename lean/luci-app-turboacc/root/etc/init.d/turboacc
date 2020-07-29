@@ -20,6 +20,9 @@ inital_conf(){
 	config_get "dns_caching_mode" "config" "dns_caching_mode" "0"
 	config_get "dns_caching_v4_dns" "config" "dns_caching_v4_dns"
 	config_get "dns_caching_v6_dns" "config" "dns_caching_v6_dns"
+
+	config_load "network"
+	config_get "lan_addr" "lan" "ipaddr" "192.168.1.1"
 }
 
 start_pdnsd() {
@@ -201,7 +204,7 @@ change_dns() {
 
 revert_dns() {
 	uci del_list dhcp.@dnsmasq[0].server="127.0.0.1#5333" 2>/dev/null
-	uci set dhcp.@dnsmasq[0].resolvfile="/tmp/resolv.conf.auto"
+	uci set dhcp.@dnsmasq[0].resolvfile="/tmp/resolv.conf.d/resolv.conf.auto"
 	uci set dhcp.@dnsmasq[0].noresolv="0"
 	uci commit dhcp
 }
@@ -244,6 +247,9 @@ start(){
 			start_pdnsd
 		elif [ "${dns_caching_mode}" = "2" ];  then
 			start_dnsforwarder
+		elif [ "${dns_caching_mode}" = "3" ];  then
+			mkdir -p "/etc/AdGuardHome"
+			AdGuardHome -c "/etc/AdGuardHome/AdGuardHome.yaml" -w "/etc/AdGuardHome" -h "${lan_addr}" -p "3001" --no-check-update &
 		fi
 		change_dns
 		nohup "/usr/share/dnscache/dnscache-while.sh" > "/var/log/dnscache.file" 2>&1 &
