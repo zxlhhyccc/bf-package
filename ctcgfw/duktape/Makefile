@@ -22,7 +22,7 @@ PKG_MAINTAINER:=CN_SZTL <cnsztl@project-openwrt.eu.org>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=python
+PKG_BUILD_DEPENDS:=python2
 
 PKG_FIXUP:=autoreconf
 PKG_USE_MIPS16:=0
@@ -66,7 +66,6 @@ define Build/Compile
   $(TARGET_CC) -c -O3 -o duk_module_node.o -I. ../extras/module-node/duk_module_node.c; \
   $(TARGET_AR) cr libduktape.a duktape.o; \
   $(TARGET_AR) cr libduktape_module.a duk_module_node.o; \
-  cd ../../../..; \
   env $(call Build/Compile/Default) \
 )
 endef
