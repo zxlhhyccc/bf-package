@@ -7,8 +7,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openclash-tun
-PKG_VERSION:=2020.09.27
-PKG_RELEASE:=
+PKG_VERSION:=2020.10.09
+PKG_RELEASE:=g93e919b
 
 ifeq ($(ARCH),mipsel)
 	OPENCLASH_TUN_ARCH:=mipsle-softfloat
@@ -66,7 +66,7 @@ define Build/Prepare
 endef
 
 define Build/Configure
-	$(STAGING_DIR_HOST)/bin/upx --lzma --best $(PKG_BUILD_DIR)/clash-tun
+	# $(STAGING_DIR_HOST)/bin/upx --lzma --best $(PKG_BUILD_DIR)/clash-tun
 endef
 
 define Build/Compile
