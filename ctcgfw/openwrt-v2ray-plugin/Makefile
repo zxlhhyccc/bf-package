@@ -8,14 +8,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=v2ray-plugin
-PKG_VERSION:=1.3.5
+PKG_VERSION:=1.6.0
 PKG_RELEASE:=1
 
+PKG_SOURCE_PROTO:=git
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/teddysun/v2ray-plugin/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=46b3b9aec066df710f7ff27518c73c94ed63bbcdd6827e759da8627bf300a8d9
+PKG_SOURCE_URL:=https://github.com/teddysun/v2ray-plugin.git
+PKG_SOURCE_VERSION:=d22fe7400d30c1e4d669988baf2afc3a1e121eff
+#PKG_SOURCE_URL:=https://codeload.github.com/teddysun/v2ray-plugin/tar.gz/v$(PKG_VERSION)?
+PKG_HASH:=ff3739219f4fee3f993605a70c9862c55ad7cc4cca095ff9f0d951a6babf0dda
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
