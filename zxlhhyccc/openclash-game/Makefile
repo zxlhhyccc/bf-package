@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openclash-game
 PKG_VERSION:=v0.17.0
-PKG_RELEASE:=206-gf8a1f1d
+PKG_RELEASE:=214-g89f5710
 
 ifeq ($(ARCH),mipsel)
 	OPENCLASH_GAME_ARCH:=mipsle-softfloat
@@ -42,7 +42,7 @@ PKG_LICENSE:=Apache-2.0
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/clash-$(PKG_VERSION)-$(PKG_RELEASE)
 PKG_SOURCE:=clash-linux-$(OPENCLASH_GAME_ARCH).tar.gz
-PKG_SOURCE_URL:=https://github.com/vernesong/OpenClash/releases/download/TUN
+PKG_SOURCE_URL:=https://github.com/vernesong/OpenClash/releases/download/TUN/
 PKG_HASH:=skip
 
 include $(INCLUDE_DIR)/package.mk
