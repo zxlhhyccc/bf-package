@@ -443,7 +443,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 	border-radius: 0;
 	outline: none;
 	margin: 0;
-	padding: 0;
+	padding: 0 0.5rem;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	-webkit-box-sizing: content-box;
@@ -1117,7 +1117,7 @@ h3 {
 
 h4 {
 	font-size: 1.2rem;
-	margin: 2rem 0 0 0;
+	margin: 1.2rem 0 0 0;
 	padding: 0rem 2rem 0.75rem 2rem;
 }
 
@@ -1172,6 +1172,10 @@ h5 {
 
 .cbi-section > legend {
 	display: none !important;
+}
+
+fieldset.cbi-section{
+border:none;	
 }
 
 fieldset > fieldset,
@@ -1388,46 +1392,17 @@ td > table > tbody > tr > td,
 	-webkit-appearance: none !important;
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active,
-.cbi-button:hover,
-.cbi-button:focus,
-.cbi-button:active,
-.item:hover::after,
-.item:focus::after,
-.item:active::after,
-.cbi-page-actions .cbi-button-apply + .cbi-button-save:hover,
-.cbi-page-actions .cbi-button-apply + .cbi-button-save:focus,
-.cbi-page-actions .cbi-button-apply + .cbi-button-save:active {
-	text-decoration: none;
-	outline: 0;
-}
-
 button:hover,
 .waves-input-wrapper:hover,
 .btn:hover,
-.btn:focus,
 .cbi-button:hover,
-.cbi-button:focus,
-.item:hover::after,
-.item:focus::after {
+.item:hover::after {
 	opacity: 0.7;
-	top: 0.15rem;
-}
-
-.btn:active,
-.cbi-button:active,
-.item:active::after {
-	opacity: 0.7;
+	top: 0.1rem;
 }
 
 .cbi-button-up:hover,
 .cbi-button-up:focus {
-	opacity: 0.7;
-}
-
-.cbi-button-up:active {
 	opacity: 0.7;
 }
 
@@ -1868,7 +1843,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 	outline: 0;
 }
 
-.cbi-dropdown > ul.preview {
+#cbi-adblock-global-adb_sources .cbi-dropdown > ul.preview {
 	display: none;
 }
 
@@ -1954,6 +1929,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-dropdown > ul > li > form > input[type="checkbox"] {
 	height: auto;
 	margin: 0;
+	display:inline-block;
 }
 
 .cbi-dropdown > ul > li input[type="text"] {
@@ -2332,6 +2308,12 @@ textarea {
 	border: 0 !important;
 }
 
+textarea:focus{
+	outline: none;
+	border: 1px solid #5A8DEE !important;
+	box-shadow: 0 0px 5px 0 #5A8DEE;
+}
+
 .cbi-section textarea {
 	margin: 0rem;
 }
@@ -2626,8 +2608,8 @@ span[data-tooltip] .label {
 	background-color: #D2FFE8;
 }
 
-label > input[type="checkbox"],
-label > input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
 	position: relative;
 	right: 0.2rem;
 	margin: 0;
@@ -2737,7 +2719,7 @@ input[name="nslookup"] {
 	transition: box-shadow .25s, -webkit-box-shadow .25s;
 	border-radius: 2px;
 	text-align: left;
-	background: #faf5f3c2;
+	background: rgba(255, 255, 255, 0.75);
 	margin: 0;
 }
 
@@ -3193,24 +3175,19 @@ input[type="checkbox"] {
 	padding: 0;
 	cursor: pointer;
 	transition: all 0.2s;
-	
-	pointer-events: none;
+	display:none;
 }
 
-input[type="checkbox"][data-widget-id]{
-	position: absolute;
-	opacity: 0;
-}
 .cbi-dropdown[open]>ul.dropdown>li label {
     margin-left: .5rem;
 }
 
-.cbi-dropdown-open .cbi-dropdown[open] > ul.dropdown{
+#cbi-adblock-global-adb_sources .cbi-dropdown-open .cbi-dropdown[open] > ul.dropdown{
 	position:relative !important;
 	bottom:0 !important;
 }
 
-.cbi-dropdown-open .preview,.cbi-dropdown-open .more,.cbi-dropdown-open .open{
+#cbi-adblock-global-adb_sources .cbi-dropdown-open #cbi-adblock-global-adb_sources .preview,.cbi-dropdown-open .more,.cbi-dropdown-open .open{
 display:none !important;	
 }
 
@@ -3385,10 +3362,6 @@ input[type="checkbox"]:checked {
 		font-size: 1rem;
 	}
 
-	.table {
-		display: block;
-	}
-
 	.Interfaces .table {
 		overflow-x: hidden;
 	}
@@ -3412,6 +3385,12 @@ input[type="checkbox"]:checked {
 		border-top: 0;
 	}
 
+.node-admin-status.Overview .tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+	
 	.th,
   .td {
 		display: inline-block;
@@ -3513,6 +3492,14 @@ input[type="checkbox"]:checked {
 		width: 100% !important;
 		margin-left: 0 !important;
 	}
+#packages .tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#packages .td {
+    padding: 1em 2rem;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -4057,8 +4044,12 @@ ul.errors li {
 }
 
 input[type=password]+.cbi-button.cbi-button-neutral {
-	padding: 0.1rem 0.4rem;
+	padding: 0 0.4rem;
 	color: #fff !important;
+}
+
+.cbi-input-password[type=text]+.cbi-button.cbi-button-neutral {
+	padding: 0.2rem 0.5rem;
 }
 
 .main-right>hr {
@@ -4118,13 +4109,9 @@ div[id^="cbi-unblockmusic"] .cbi-button {
 	height: 100%;
 }
 
-@media screen and (max-width: 1152px) {
-#packages .tr {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+[data-page="admin-network-wifi"] tr > td .cbi-button{
+	margin-left: 0 !important;
 }
-#packages .td {
-    padding: 1em 2rem;
-}
+[data-page="admin-network-wifi"] tr > td input[type="button"]{
+	    padding: 0.5rem 1rem !important;
 }
