@@ -7,13 +7,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=filebrowser
-PKG_VERSION:=2.6.2
+PKG_VERSION:=2.10.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=be8683f
+PKG_SOURCE_VERSION:=c746c19
 PKG_SOURCE_URL:=https://github.com/filebrowser/filebrowser
-PKG_MIRROR_HASH:=dbf4ff9db137d1f596ad687edec097ae1bbf75ef04447256044e960e044e2ee5
+PKG_MIRROR_HASH:=6f19d0ca55119983cd39d2588f7a70a138bcc8aae3f23c08777a56be437c692d
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
@@ -63,7 +63,7 @@ endef
 
 ifeq ($(CONFIG_FILEBROWSER_COMPRESS_GOPROXY),y)
 export GO111MODULE=on
-export GOPROXY=https://goproxy.cn
+export GOPROXY=https://goproxy.io
 endif
 
 define Build/Compile
