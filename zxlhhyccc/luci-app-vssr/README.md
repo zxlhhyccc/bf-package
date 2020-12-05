@@ -2,7 +2,7 @@
 A new SSR SS V2ray Trojan luci app bese luci-app-ssr-plus  
 <b>支持全部类型的节点分流</b>  
 目前只适配最新版 argon主题 （其他主题下应该也可以用 但显示应该不会很完美）
-目前Lean最新版本的openwrt 已经可以直接拉取源码到package/lean 下直接进行勾选并编译，由于有部分文件和ssr+ 同文件名所以不能同时编译。  
+目前Lean最新版本的openwrt 已经可以直接拉取源码到 package/lean 下直接进行勾选并编译。  
 
 ### 写在前面：
 插件的初衷是优化操作体验和提升视觉感受，所以插件体积会比较大，并不适合小ROM机器使用。
@@ -13,11 +13,16 @@ A new SSR SS V2ray Trojan luci app bese luci-app-ssr-plus
 稳定性的差异来自于你固件的内核，还有ss ssr v2ray 这几个核心插件的稳定性，当然你的节点才是影响稳定性的最大因素。  
 Luci 能决定的只有操作起来是否便利、顺手，还有对几个核心应用功能的适配挖掘而已。
 
-### Update Log 2020-08-30  v1.17-1
+### Update Log 2020-12-04  v1.18
 
 #### Updates
 
-- FIX: 修复台台湾视频分流不起作用的问题。
+- NEW: 增加V2ray的VLESS支持。
+- NEW: 增加V2ray的XTLS支持。
+- NEW: 增加Xray的支持（可选择使用Xray代替V2ray执行）。
+- NEW: 增加订阅时可手动添加机场名称（主要用于v2ray订阅）。
+- NEW: 增加订阅节点过滤。
+- UPDATE: 更新IP地址库。
 
 详情见[具体日志](./relnotes.txt)。 
 
